@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label class="form-label">Product Name *</label>
+    <label class="form-label">Nama Produk *</label>
     <input type="text" name="name" class="form-control" value="{{ old('name', $product->name ?? '') }}">
     @error('name')
         <span class="text-danger">{{ $message }}</span>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Description</label>
+    <label class="form-label">Deskripsi</label>
     <textarea name="description" class="form-control">{{ old('description', $product->description ?? '') }}</textarea>
     @error('description')
         <span class="text-danger">{{ $message }}</span>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Price *</label>
+    <label class="form-label">Harga *</label>
     <input type="number" name="price" step="0.01" class="form-control"
         value="{{ old('price', $product->price ?? '') }}">
     @error('price')
@@ -24,7 +24,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Quantity *</label>
+    <label class="form-label">Kuantitas *</label>
     <input type="number" name="quantity" class="form-control" value="{{ old('quantity', $product->quantity ?? '') }}">
     @error('quantity')
         <span class="text-danger">{{ $message }}</span>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Category</label>
+    <label class="form-label">Kategori *</label>
     <select name="category_id" class="form-select">
         <option value="">{{ $product->category->name ?? 'Choose Category'}}</option>
         @foreach ($categories as $category)
@@ -57,7 +57,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Product Image</label>
+    <label class="form-label">Gambar Produk</label>
     <input type="file" name="image" class="form-control">
     @error('image')
         <span class="text-danger">{{ $message }}</span>

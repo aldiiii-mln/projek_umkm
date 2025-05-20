@@ -9,11 +9,11 @@
                     <img src="{{ asset('storage/' . $product->image) }}" width="250" class="mb-3">
                 @endif
 
-                <p><strong>Name:</strong> {{ $product->name }}</p>
-                <p><strong>Description:</strong> {{ $product->description }}</p>
-                <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
-                <p><strong>Quantity:</strong> {{ $product->quantity }}</p>
-                <p><strong>Category:</strong> {{ $product->category->name ?? '-' }}</p>
+                <p><strong>Nama:</strong> {{ $product->name }}</p>
+                <p><strong>Deskripsi:</strong> {{ $product->description }}</p>
+                <p><strong>Harga:</strong> Rp. {{ number_format($product->price, 2) }}</p>
+                <p><strong>Kuantitas:</strong> {{ $product->quantity }}</p>
+                <p><strong>Kategori:</strong> {{ $product->category->name ?? '-' }}</p>
                 <p><strong>Status:</strong>
                     <span class="badge bg-{{ $product->status === 'active' ? 'success' : 'secondary' }}">
                         {{ ucfirst($product->status) }}
