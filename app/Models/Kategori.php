@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kategori extends Model
 {
-    // use SoftDeletes;
+    use SoftDeletes;
 
-    // protected $fillable = [
-    //     "name",
-    //     "status",
-    // ];
+    protected $fillable = [
+        "name",
+        "status",
+    ];
 
-    // public function products(){
-    //     return $this->hasMany(Product::class);
-    // }
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }
