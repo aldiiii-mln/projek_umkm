@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('price');
             $table->string('image')->nullable();
             $table->enum('status', ['ada','tidak ada'])->default('ada');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->softDeletes();
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
+            // $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('status', ['ada','habis'])->default('ada');
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
         });
     }
