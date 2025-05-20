@@ -10,7 +10,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-md-6">
-                                <form class="d-flex" role="search" action="{{ route('product.index')}}" method="GET">
+                                <form class="d-flex" role="search" action="{{ route('product.trashed')}}" method="GET">
                                     @csrf
                                     <input class="form-control me-2" name="search" type="search" placeholder="Search"
                                         aria-label="Search">
@@ -18,14 +18,8 @@
                                 </form>
                             </div>
                             <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="{{ route('product.trashed')}}" class="float-end btn btn-warning">Deleted</a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="/create-product" class="float-end btn btn-success">Add New</a>
-                                    </div>
-                                </div>
+                                <a href="{{ route('product.index')}}" class="float-end btn btn-warning">View All
+                                    Products</a>
                             </div>
                         </div>
 
@@ -56,17 +50,23 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ str($product->name)->words(2)}}</td>
+                                    <td>{{ $product->name}}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->quantity}}</td>
                                     <td>{{ $product->price}}</td>
                                     <td>{{ $product->status}}</td>
-                                    <td>{{ str($product->description)->words(5)}}</td>
-                                    <td><a href="{{ route('product.show', $product->id) }} " class="btn btn-success btn-sm">show</a>
-                                    <td><a href="{{ route('product.edit', $product->id) }} " class="btn btn-primary btn-sm">edit</a>
+                                    <td>{{ $product->description}}</td>
+                                    <td><a href="{{ route('trashed.show', $product->id) }} " class="btn btn-success btn-sm">show</a>
+                                    <td>
+                                        <form action="{{ route('product.restore', $product->id) }}" method="POST"
+                                            style="display:inline-block">
+                                            @csrf @method('PUT')
+                                            <button onclick="return confirm('Are you sure?')"
+                                                class="btn btn-sm btn-info">Restore</button>
+                                        </form>
                                     </td>
                                     <td>
-                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST"
+                                        <form action="{{ route('product.delete', $product->id) }}" method="POST"
                                             style="display:inline-block">
                                             @csrf @method('DELETE')
                                             <button onclick="return confirm('Are you sure?')"
